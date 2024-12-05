@@ -15,7 +15,7 @@ hooks:
 
   BeforeInstall:
     - location: scripts/before_install.sh
-      timeout: 300
+      timeout: 600
 #      runas: root
   
   AfterInstall:
