@@ -1,13 +1,21 @@
 #!/bin/bash
 
-#_Change_Working_Directory
+# Change working directory
 cd /home/ec2-user/server
 
-#_Update_&_Set_Node_Version
-curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
+# Install NVM (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-#_Download_Node_&NPM
-yum -y install nodejs npm
+# Source nvm to make it available in the current session
+export NVM_DIR="/home/ec2-user/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-#_Download_PM2
+# Install Node.js 14.x using NVM
+nvm install 14
+
+# Set Node.js 14.x as the default version
+nvm use 14
+nvm alias default 14
+
+# Install PM2 globally
 npm install pm2@latest -g
